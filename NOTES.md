@@ -7,7 +7,7 @@ Joe Herman
 
 I will use **Python** because why not?
 
-I'll **dockerize the app** and installation since Python dependencies are particularly annoying to keep portable.
+I'll **Dockerize the app** and installation since Python dependencies are particularly annoying to keep portable.
 
 All operational things (build, run, test, etc.) should be contained in a single **`Makefile`**.
 
@@ -25,7 +25,8 @@ Documentation should cover at least the following aspects:
 ## Non-goals
 
 * Kubernetes
-* On call reference
+* On call reference and troubleshooting guide
+* Opsviz things like APM, metrics, unified logging
 
 ## TODO
 1. ~~Document approach~~
@@ -36,5 +37,6 @@ Documentation should cover at least the following aspects:
 6. Implement one new feature to improve the application:
   * authorization?
   * secrets management?
+  * HTTPS?
 7. Finalize documentation
 

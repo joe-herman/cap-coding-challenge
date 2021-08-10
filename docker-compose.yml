@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  cap-app:
+    build: ./python/
+    command: ["/app/run.sh"]
+    depends_on:
+      - "cap-redis"
+    env_file: ./python/.env
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./python/:/app/:rw
+    working_dir: /app/
+  cap-test:
+    build: ./test/
+    command: ["/test/test.sh"]
+    depends_on:
+      - cap-app
+    volumes:
+      - ./test/:/test/:rw
+    working_dir: /test/
+  cap-redis:
+    image: "redis:alpine"

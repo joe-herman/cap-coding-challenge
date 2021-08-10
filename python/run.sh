@@ -1,6 +1,5 @@
 #!/bin/bash
 
-export FLASK_APP=app.py
-export FLASK_ENV=development
-
+./install.sh
+source venv/bin/activate
 flask run
