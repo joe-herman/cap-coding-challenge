@@ -25,17 +25,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: Package files
+        run: 	tar cvfz cap-challenge-jherman.tar.gz python test .gitignore CITATIONS.md docker-compose.yml Makefile NOTES.md README.md
+
       # Runs a set of commands using the runners shell
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: cap-coding-challenge-jh
-          path: |
-            .gitignore
-            CITATIONS.md
-            docker-compose.yml
-            Makefile
-            NOTES.md
-            python/
-            README.md
-            test/
+          name: cap-coding-challenge-jherman
+          path: cap-challenge-jherman.tar.gz
