@@ -30,8 +30,8 @@ Documentation should cover at least the following aspects:
 
 ## TODO
 1. ~~Document approach~~
-2. Set up boilerplate and sidecar containers for data persistence and testing
-3. For the `/stringinate` endpoint, for a given input string we need to find the character that occurs most frequently and add that character, along with its number of occurrences to the API response JSON. You decide how to represent this in the JSON response.  Ignore white space and punctuation.
+2. ~Set up boilerplate and sidecar containers for data persistence and testing~
+~3. For the `/stringinate` endpoint, for a given input string we need to find the character that occurs most frequently and add that character, along with its number of occurrences to the API response JSON. You decide how to represent this in the JSON response.  Ignore white space and punctuation.~
 4. For the `stats` endpoint, track which string input has been seen the most times. Return this value as the `most_popular` key in the response JSON.
 5. For the `stats` endpoint, track which string input is the longest string to be seen by the server and return as the `longest_input_received` key in the response JSON.
 6. Implement one new feature to improve the application:
