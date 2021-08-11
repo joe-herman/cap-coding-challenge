@@ -2,6 +2,34 @@
 Joe Herman
 8.1.2021
 
+## Getting started
+Download a [release](https://github.com/Penryn/cap-coding-challenge/releases), or grab a [build from the `main` branch](https://github.com/Penryn/cap-coding-challenge/actions?query=branch%3Amain).
+
+### Prerequisites
+* Docker
+* Standard make build tools
+
+### Running
+After expanding the archive, run one of the following:
+
+```sh
+# Run the server
+make run
+```
+
+```sh
+# Run built-in tests
+make test
+```
+
+```sh
+# Jump into a shell on the app
+APP=cap-app make shell
+
+# Jump into a shell on the tester app
+APP=cap-test make shell
+```
+
 ## Approach
 ***tl;dr in bold***
 
@@ -16,6 +44,8 @@ Since this is about web services and design decisions, I will add a persistent c
 Basic container orchestration **lays groundwork for sidecar services** (networking [Zero Trust, load balancing], metrics, logging, auth, etc.) and scaling. Admittedly, for a basic app, this may be a wholly unnecessary performance and maintenance drain.
 
 Tests will **integration test** the app's behavior because I don't feel like mocking/stubbing out contract tests right now.
+
+I will use GitHub Actions to help with CI and to give static builds that are easily referenced later.
 
 Documentation should cover at least the following aspects:
 * **Developer documentation** (like this!) should clearly indicate _why_ the code does what it does.
@@ -38,6 +68,7 @@ Documentation should cover at least the following aspects:
   * authorization?
   * secrets management?
   * HTTPS?
-  * Persistence
+  * Persistence?
+  * CI with GHA
 7. Finalize documentation
 

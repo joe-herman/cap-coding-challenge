@@ -34,3 +34,12 @@ jobs:
         with:
           name: cap-coding-challenge-jherman
           path: cap-challenge-jherman.tar.gz
+
+      # On tag, define a release
+      - name: Release
+        uses: softprops/action-gh-release@v1.12
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            cap-challenge-jherman.tar.gz
+            README.md

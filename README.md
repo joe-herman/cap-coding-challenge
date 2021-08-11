@@ -1,5 +1,9 @@
 # CAP Coding Interview
 
+**_For anything other than the original prompt below, refer to `NOTES.md` and `CITATIONS.md`._**
+----
+
+
 Through this exercise we wish to assess a candidates ability to execute on some of the more common types of tasks we see on a daily basis.  This exercise includes web services, string/collection manipulation, with a lead into design decisions for conversation during the interview.
 
 Your job is to get the app running, [implement some features](#features-for-you-to-implement), and send us your implementation.
