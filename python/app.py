@@ -9,7 +9,9 @@ app = Flask(__name__)
 seen_strings = {}
 seen_string_stats = {
     'mostPopularStr': None,
-    'mostPopularCount': 0
+    'mostPopularCount': 0,
+    'longestStr': None,
+    'longestStrLen':  0
 }
 
 @app.route('/')
@@ -70,6 +72,11 @@ def stringinate():
         seen_string_stats['mostPopularCount'] = seen_strings[input]
         seen_string_stats['mostPopularStr'] = input
 
+    length = len(input)
+    if len(input) > seen_string_stats['longestStrLen']:
+        seen_string_stats['longestStr'] = input
+        seen_string_stats['longestStrLen'] = length
+
     return {
         "input": input,
         "length": len(input),
@@ -81,5 +88,6 @@ def stringinate():
 def string_stats():
     return {
         "inputs": seen_strings,
-        "most_popular": seen_string_stats['mostPopularStr']
+        "most_popular": seen_string_stats['mostPopularStr'],
+        "longest_input_received": seen_string_stats['longestStr']
     }

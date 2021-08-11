@@ -36,3 +36,12 @@ def test_stats_ok():
   response = r.json()
   assert response['most_popular'] == testStr
 
+
+def test_stats_long_string():
+  # Create a long string
+  longStr = ''.join(['a'] * 1000)
+  requests.post(STRINGINATE_URL, data=json.dumps({'input': longStr}), headers=CONTENT_TYPE_JSON)
+  r = requests.get(STATS_URL)
+  assert r.status_code == 200, f'HTTP 200 expected from {STATS_URL} {r.text}'
+  response = r.json()
+  assert response['longest_input_received'] == longStr
