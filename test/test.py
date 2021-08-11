@@ -5,6 +5,8 @@ from werkzeug.datastructures import Headers
 
 APP_URL='http://cap-app:5000/'
 STRINGINATE_URL=f'{APP_URL}stringinate'
+STATS_URL=f'{APP_URL}stats'
+
 
 CONTENT_TYPE_JSON = {
   'Content-Type': 'application/json'
@@ -24,5 +26,13 @@ def test_stringinate_ok():
   print(response)
   assert response['popularChar'] == 'r'
 
+def test_stats_ok():
+  testStr = 'reallyPopularString'
+  for i in range(10):
+    requests.post(STRINGINATE_URL, data=json.dumps({'input': testStr}), headers=CONTENT_TYPE_JSON)
 
+  r = requests.get(STATS_URL)
+  assert r.status_code == 200, f'HTTP 200 expected from {STATS_URL} {r.text}'
+  response = r.json()
+  assert response['most_popular'] == testStr
 

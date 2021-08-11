@@ -7,6 +7,10 @@ import string
 app = Flask(__name__)
 
 seen_strings = {}
+seen_string_stats = {
+    'mostPopularStr': None,
+    'mostPopularCount': 0
+}
 
 @app.route('/')
 def root():
@@ -61,6 +65,10 @@ def stringinate():
         seen_strings[input] += 1
     else:
         seen_strings[input] = 1
+    
+    if seen_strings[input] > seen_string_stats['mostPopularCount']:
+        seen_string_stats['mostPopularCount'] = seen_strings[input]
+        seen_string_stats['mostPopularStr'] = input
 
     return {
         "input": input,
@@ -68,8 +76,10 @@ def stringinate():
         "popularChar": mostPopularChar(input)
     }
 
+
 @app.route('/stats')
 def string_stats():
     return {
         "inputs": seen_strings,
+        "most_popular": seen_string_stats['mostPopularStr']
     }
