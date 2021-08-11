@@ -9,3 +9,5 @@
 - [Python regex module](https://bitbucket.org/mrabarnett/mrab-regex/src/hg/README.rst) used instead of `re` for punctuation matching because I'm cheap
 - [GitHub actions build artifact upload](https://github.com/marketplace/actions/upload-a-build-artifact?version=v2.2.4)
 - [GitHub actions create a release](https://github.com/marketplace/actions/gh-release)
+- [Redlock](https://github.com/glasslion/redlock) for locking operations in Redis
+- [Redis SortedSet documentation](https://redis.io/commands#sorted_set) used for popularity rankings
