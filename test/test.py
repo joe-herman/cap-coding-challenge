@@ -1,8 +1,6 @@
 import requests
 import json
 
-from werkzeug.datastructures import Headers
-
 APP_URL='http://cap-app:5000/'
 STRINGINATE_URL=f'{APP_URL}stringinate'
 STATS_URL=f'{APP_URL}stats'
@@ -34,7 +32,7 @@ def test_stats_ok():
   r = requests.get(STATS_URL)
   assert r.status_code == 200, f'HTTP 200 expected from {STATS_URL} {r.text}'
   response = r.json()
-  assert response['most_popular'] == testStr
+  assert response['most_popular'] == testStr, f'Expected most_popular to match {testStr}'
 
 
 def test_stats_long_string():
@@ -44,4 +42,4 @@ def test_stats_long_string():
   r = requests.get(STATS_URL)
   assert r.status_code == 200, f'HTTP 200 expected from {STATS_URL} {r.text}'
   response = r.json()
-  assert response['longest_input_received'] == longStr
+  assert response['longest_input_received'] == longStr, f'Expected longest_input_received to match {longStr}'

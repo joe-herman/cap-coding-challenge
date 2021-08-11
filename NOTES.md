@@ -45,7 +45,9 @@ Basic container orchestration **lays groundwork for sidecar services** (networki
 
 Tests will **integration test** the app's behavior because I don't feel like mocking/stubbing out contract tests right now.
 
-I will use GitHub Actions to help with CI and to give static builds that are easily referenced later.
+I will use **GitHub Actions to help with CI and to give static builds** that are easily referenced later.
+
+I used **Redis** ~~to overcomplicate things~~ as a memory-based store to allow for theoretical horizontal scaling (benefits debatable).
 
 Documentation should cover at least the following aspects:
 * **Developer documentation** (like this!) should clearly indicate _why_ the code does what it does.
@@ -64,11 +66,12 @@ Documentation should cover at least the following aspects:
 3. ~~For the `/stringinate` endpoint, for a given input string we need to find the character that occurs most frequently and add that character, along with its number of occurrences to the API response JSON. You decide how to represent this in the JSON response.  Ignore white space and punctuation.~~
 4. ~~For the `stats` endpoint, track which string input has been seen the most times. Return this value as the `most_popular` key in the response JSON.~~
 5. ~~For the `stats` endpoint, track which string input is the longest string to be seen by the server and return as the `longest_input_received` key in the response JSON.~~
-6. Implement one new feature to improve the application:
-  * authorization?
-  * secrets management?
-  * HTTPS?
-  * Persistence?
-  * CI with GHA
+6. ~~Implement one new feature to improve the application:~~
+  * ~Persistence/caching~
+  * ~CI with GHA~
 7. Finalize documentation
+8. Additional tests
 
+## Version history
+* v1.1.0 requires redis. There are performance tradeoffs particularly in the `/stats` endpoint.
+* v1.0.0 is an MVP

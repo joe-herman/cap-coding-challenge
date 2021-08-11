@@ -42,4 +42,4 @@ jobs:
         with:
           files: |
             cap-challenge-jherman.tar.gz
-            README.md
+            NOTES.md
