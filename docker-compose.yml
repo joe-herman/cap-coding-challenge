@@ -7,7 +7,7 @@ services:
       - "cap-redis"
     env_file: ./python/.env
     ports:
-      - "5000:5000"
+      - "6000:6000"
     volumes:
       - ./python/:/app/:rw
     working_dir: /app/

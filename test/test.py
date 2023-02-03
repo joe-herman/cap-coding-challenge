@@ -1,7 +1,7 @@
 import requests
 import json
 
-APP_URL='http://cap-app:5000/'
+APP_URL='http://cap-app:6000/'
 STRINGINATE_URL=f'{APP_URL}stringinate'
 STATS_URL=f'{APP_URL}stats'
 

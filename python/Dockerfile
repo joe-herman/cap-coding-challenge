@@ -4,6 +4,6 @@ WORKDIR /app/
 COPY . /app/
 RUN /app/install.sh
 
-EXPOSE 5000
+EXPOSE 6000
 
 CMD ["/app/run.sh"]

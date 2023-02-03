@@ -13,7 +13,7 @@ Once the dependency install has completed, execute `. venv/bin/activate && ./run
 Using `curl` send the following test request to the Flask application.
 
 ```
-curl -id '{"input":"this is the input"}' -H 'Content-Type: application/json' http://localhost:5000/stringinate
+curl -id '{"input":"this is the input"}' -H 'Content-Type: application/json' http://localhost:6000/stringinate
 ```
 
 If the application is running you should see the following output in your terminal:

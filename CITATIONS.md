@@ -11,3 +11,4 @@
 - [GitHub actions create a release](https://github.com/marketplace/actions/gh-release)
 - [Redlock](https://github.com/glasslion/redlock) for locking operations in Redis
 - [Redis SortedSet documentation](https://redis.io/commands#sorted_set) used for popularity rankings
+- [MacOS Ventura AirPlay ports](https://www.reddit.com/r/webdev/comments/qg8yt9/apple_took_over_port_5000_in_the_latest_macos/)

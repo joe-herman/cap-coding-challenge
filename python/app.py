@@ -12,7 +12,7 @@ redlocker = RedLockFactory(
     connection_details=[{
         'host': 'cap-redis',
         'port': 6379,
-        'db':0
+        'db': 0
     }]
 )
 CACHE_POPULARITY="STRPOP"
@@ -20,15 +20,6 @@ CACHE_LONGEST_STR="LONGSTR"
 CACHE_LONGEST_LEN="LONGLEN"
 
 app = Flask(__name__)
-
-# Preserved for posterity
-seen_strings = {}
-seen_string_stats = {
-    'mostPopularStr': None,
-    'mostPopularCount': 0,
-    'longestStr': None,
-    'longestStrLen':  0
-}
 
 @app.route('/')
 def root():
@@ -90,7 +81,6 @@ def stringinate():
         cacheLen = 0 if cacheRaw is None else int(bytes.decode(cacheRaw))
         if length > cacheLen:
             cache.set(CACHE_LONGEST_STR, input)
-            cache.set(CACHE_LONGEST_LEN, str(length))
 
     return {
         "input": input,
@@ -107,8 +97,10 @@ def string_stats():
     for strCount in counts:
         inputs[bytes.decode(strCount[0])] = round(strCount[1])
 
+    longest_str = bytes.decode(cache.get(CACHE_LONGEST_STR))
     return {
         "inputs": inputs,
         "most_popular": bytes.decode(cache.zrevrange(CACHE_POPULARITY, 0, 0)[0]),
-        "longest_input_received": bytes.decode(cache.get(CACHE_LONGEST_STR))
+        "longest_input_received": longest_str,
+        "longest_input_len": len(longest_str)
     }

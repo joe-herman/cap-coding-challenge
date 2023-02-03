@@ -26,20 +26,20 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Package files
-        run: 	tar cvfz cap-challenge-jherman.tar.gz python test .gitignore CITATIONS.md docker-compose.yml Makefile NOTES.md README.md
+        run: tar cvfz cap-challenge-jherman.tar.gz python test .gitignore CITATIONS.md docker-compose.yml Makefile NOTES.md README.md
 
       # Runs a set of commands using the runners shell
       - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: cap-coding-challenge-jherman
           path: cap-challenge-jherman.tar.gz
 
       # On tag, define a release
       - name: Release
-        uses: softprops/action-gh-release@v0.1.12
+        uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            cap-challenge-jherman.tar.gz
+            cap-challenge-jherman.tar.gz 
             NOTES.md

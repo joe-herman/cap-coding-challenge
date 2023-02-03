@@ -1,6 +1,7 @@
 # CAP Interview
 Joe Herman
-8.1.2021
+Created 8.1.2021
+Updated 2.3.2023
 
 ## Getting started
 Download a [release](https://github.com/Penryn/cap-coding-challenge/releases), or grab a [build from the `main` branch](https://github.com/Penryn/cap-coding-challenge/actions?query=branch%3Amain).
@@ -13,7 +14,7 @@ Download a [release](https://github.com/Penryn/cap-coding-challenge/releases), o
 After expanding the archive, run one of the following:
 
 ```sh
-# Run the server
+# Run the server (automatically rebuilds images)
 make run
 ```
 
@@ -22,12 +23,50 @@ make run
 make test
 ```
 
+## Sample API Usage
+
+### Send a string
+
+```bash
+curl -id '{"input":"this is the input"}' -H 'Content-Type: application/json' http://localhost:6000/stringinate
+```
+
+### Get stats
+```bash
+curl -i -H 'Content-Type: application/json' http://localhost:6000/stats
+```
+
+## Ops Guide
+
+### Updating environment variables
+Modify `./python/.env` to update Flask server variables.
+Update `./docker-compose.yml` for other container variables.
+
+### Updating package dependencies
+1. Obtain a shell in the appropriate container:
+
 ```sh
 # Jump into a shell on the app
 APP=cap-app make shell
 
 # Jump into a shell on the tester app
 APP=cap-test make shell
+```
+
+2. Install current dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+3. Update pip dependencies as needed
+```bash
+pip install --upgrade
+```
+
+4. Update requirements.txt
+```bash
+pip freeze > requirements.txt
 ```
 
 ## Approach
@@ -57,7 +96,7 @@ Documentation should cover at least the following aspects:
 ## Non-goals
 
 * Kubernetes
-* On call reference and troubleshooting guide
+* On-call reference and troubleshooting guide
 * Opsviz things like APM, metrics, unified logging
 
 ## TODO
@@ -67,11 +106,12 @@ Documentation should cover at least the following aspects:
 4. ~~For the `stats` endpoint, track which string input has been seen the most times. Return this value as the `most_popular` key in the response JSON.~~
 5. ~~For the `stats` endpoint, track which string input is the longest string to be seen by the server and return as the `longest_input_received` key in the response JSON.~~
 6. ~~Implement one new feature to improve the application:~~
-  * ~Persistence/caching~
-  * ~CI with GHA~
+  * ~~Persistence/caching~~
+  * ~~CI with GHA~~
 7. Finalize documentation
 8. Additional tests
 
 ## Version history
+* v1.2.0 updates the default port to 6000 to avoid conflicts when running on MacOS Ventura with AirPlay enabled.
 * v1.1.0 requires redis. There are performance tradeoffs particularly in the `/stats` endpoint.
 * v1.0.0 is an MVP
